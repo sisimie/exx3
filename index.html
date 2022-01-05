@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+	<style>
+	h1{
+		text-align: center;
+		font-size:24px;
+	}
+		
+	}
+	li{
+		height: 52px;
+	    line-height: 52px;			   
+	    margin-bottom: 9px;
+	    background:url("res/listLeft0.png") no-repeat 30px center  #eff2f4;
+	    padding-left:80px;
+	}
+	a{
+		text-decoration: none;
+	}
+	</style>
+</head>
+<body>
+	<h1>童年动画大挑战</h1>
+
+	<div class="abc">
+		<p>游玩下面的游戏吧！</p>
+	</div>
+    <script src="js/pixi.min.js"></script>
+    <script>
+		var app = new PIXI.Application(800,600);
+        document.body.appendChild(app.view);
+        
+        var bg = new PIXI.Sprite.fromImage("res/bg.png");
+        app.stage.addChild(bg);
+		
+		var startgame = new PIXI.Sprite.fromImage("res/startgame.png");
+		app.stage.addChild(startgame);
+		startgame.x=270;
+		startgame.y=300;
+		startgame.alpha=0.5;
+		
+		var title = new PIXI.Sprite.fromImage("res/title.png");
+		app.stage.addChild(title);
+		title.x=100;
+		title.y=125;
+		
+		var picture1 = new PIXI.Sprite.fromImage("res/picture1.jpeg");
+		app.stage.addChild(picture1);
+		picture1.x=120;
+		picture1.y=40;
+		picture1.visible = false;
+		
+		var answer1 = new PIXI.Sprite.fromImage("res/answer1.png");
+		app.stage.addChild(answer1);
+		answer1.x=130;
+		answer1.y=470;
+		answer1.alpha=0.5;
+		answer1.visible = false;
+		
+		var answer2 = new PIXI.Sprite.fromImage("res/answer2.png");
+		app.stage.addChild(answer2);
+		answer2.x=450;
+		answer2.y=470;
+		answer2.alpha=0.5;
+		answer2.visible = false;
+		
+		var final = new PIXI.Sprite.fromImage("res/final.png");
+		app.stage.addChild(final);
+		final.x=310;
+		final.y=510;
+		final.visible = false;
+		
+		var final0 = new PIXI.Sprite.fromImage("res/final0.png");
+		app.stage.addChild(final0);
+		final0.x=310;
+		final0.y=510;
+		final0.visible = false;
+		
+		startgame.interactive = true;
+		startgame.on("mouseover",light1);
+		function light1(){
+			startgame.alpha = 1.0;
+			startgame.buttonMode = true;
+		}
+		startgame.on("mouseout",dark1);
+		function dark1(){
+			startgame.alpha = 0.5;
+		}
+		startgame.on("click",hide1);
+		function hide1(){
+			title.visible = false;
+			startgame.visible = false;
+			picture1.visible = true;
+			answer1.visible = true;
+			answer2.visible = true;
+		}
+		
+		answer1.interactive = true;
+		answer1.on("mouseover",light2);
+		function light2(){
+			answer1.alpha = 1.0;
+			answer1.buttonMode = true;
+		}
+		answer1.on("mouseout",dark2);
+		function dark2(){
+			answer1.alpha = 0.5;
+		}
+		answer1.on("click",hide2);
+		function hide2(){
+			final.visible = true;
+			final0.visible = false;
+		}
+		
+		answer2.interactive = true;
+		answer2.on("mouseover",light3);
+		function light3(){
+			answer2.alpha = 1.0;
+			answer2.buttonMode = true;
+		}
+		answer2.on("mouseout",dark3);
+		function dark3(){
+			answer2.alpha = 0.5;
+		}
+		answer2.on("click",hide3)
+		function hide3(){
+			final0.visible = true;
+			final.visible = false;
+		}
+    </script>
+</body>
+</html>
